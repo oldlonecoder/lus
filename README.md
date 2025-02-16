@@ -5,7 +5,7 @@
 
 ### Exploring, Learning and write a set of C++ framework of (from my own) libraries
 
-## core support classes ( namespace tuxvision ) main directory( for ex.: #include <tuxvision/string.h>)
+## core support classes ( namespace tuxvision ) main directory( for ex.: #include <luss/string.h>)
 
     - [class tux::string]
         Composite accumulator for serializing and formatting supported components into its container - std::string.
