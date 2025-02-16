@@ -12,7 +12,7 @@
     - [lus::color]
         Ansi (and future HTML) colours mnemonics and renderers
     - [rem :  return enumrated mnemonic]
-        Coherant and consistent global return code meaningful mnemonics.
+        Coherant global return mnemonic codes.
         Also used by the messaging system and journals.
     - [class lus::signals::notify; lus::signals::signotify ]
         C++ template header for basic signal-slots - A modified copy of :
