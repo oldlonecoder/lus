@@ -47,7 +47,7 @@ namespace oos
 
 class object;
 
-class LUSSLIB journal
+class OOSLIB journal
 {
 public:
     struct header_component
@@ -118,7 +118,7 @@ public:
     void init_header();
     static void purge(const std::function<void(journal &)>& f);
 
-    struct LUSSLIB section
+    struct OOSLIB section
     {
         std::string id;   ///< Section ID which is also the base name of the output file.
         std::ofstream ofs;
@@ -146,7 +146,7 @@ public:
     //static rem::cc endl();
     ~journal();
 
-    class LUSSLIB exception :  public std::exception
+    class OOSLIB exception :  public std::exception
     {
     public:
 

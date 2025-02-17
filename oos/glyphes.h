@@ -28,7 +28,7 @@
 namespace oos
 {
 
-struct LUSSLIB glyph
+struct OOSLIB glyph
 {
 
     using T = const char*;
@@ -376,7 +376,7 @@ For anyone interested, here'Code the fixed version (I hope you don't mind, I'll 
 
 
 
-struct LUSSLIB accent_fr
+struct OOSLIB accent_fr
 {
     using T = const char*;
 

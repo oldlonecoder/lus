@@ -28,7 +28,7 @@
  namespace oos::ui
  {
 
-struct LUSSLIB color {
+struct OOSLIB color {
     enum code : integers::U16 {
         /*0   */ black = 0,         //#000000	rgb(128,0,0)	hsl(0,100%,25%)
         /*1   */ maroon,            //#800000	rgb(128,0,0)	hsl(0,100%,25%)
@@ -289,7 +289,7 @@ struct LUSSLIB color {
         /*256 */ z =255                 // final enum, same as color::reset;
     };
 
-    struct LUSSLIB pair
+    struct OOSLIB pair
     {
         color::code fg = color::white;
         color::code bg = color::grey11;
@@ -298,7 +298,7 @@ struct LUSSLIB color {
         color::pair &operator>>(std::string &out);
     };
 
-    struct LUSSLIB data
+    struct OOSLIB data
     {
         color::code Enum = color::reset;
         std::string_view color_name = " ";
@@ -323,7 +323,7 @@ struct LUSSLIB color {
     static std::string render_html(color::pair a_pair);
     static color::data query_data(color::code a_code);
 
-    struct LUSSLIB element
+    struct OOSLIB element
     {
         std::string name{};
         union
@@ -340,7 +340,7 @@ struct LUSSLIB color {
         using list = std::vector<color::element>;
     };
 
-    struct LUSSLIB elements
+    struct OOSLIB elements
     {
         std::string name{};
 

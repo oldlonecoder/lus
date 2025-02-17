@@ -28,7 +28,7 @@ namespace oos
 
 using namespace integers;
 
-class  LUSSLIB object
+class  OOSLIB object
 {
     CLASSNAME_START(object)
 protected:

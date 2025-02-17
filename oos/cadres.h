@@ -28,7 +28,7 @@ namespace oos
 
 using namespace integers;
 using ui::color;
-struct LUSSLIB cadre
+struct OOSLIB cadre
 {
     color::pair colors;     ///< colours of the box::frame
 
@@ -37,7 +37,7 @@ struct LUSSLIB cadre
  * @brief 1v x 4h matrix for addressing Frame components
  * @note  : Source : https://github.com/ArthurSonzogni/FTXUI/blob/main/src/ftxui/screen/string.cpp
  */
-    struct LUSSLIB frame_matrix
+    struct OOSLIB frame_matrix
     {
         uint8_t Left : 2;
         uint8_t Top  : 2;
@@ -48,7 +48,7 @@ struct LUSSLIB cadre
         bool operator < (cadre::frame_matrix RHS) const;
     };
 
-    struct LUSSLIB frame_data
+    struct OOSLIB frame_data
     {
         glyph::T TL; ///< Top Left
         glyph::T TR; ///< Top Right

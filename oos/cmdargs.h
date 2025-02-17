@@ -26,7 +26,7 @@ namespace oos::cmd
 {
 
 
-struct LUSSLIB cmd_switch
+struct OOSLIB cmd_switch
 {
     using data = std::vector<std::string_view>;
     using shared = std::shared_ptr<cmd_switch>;
@@ -60,7 +60,7 @@ struct LUSSLIB cmd_switch
 };
 
 
-class LUSSLIB line
+class OOSLIB line
 {
 
     cmd_switch::array arguments;

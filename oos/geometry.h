@@ -53,7 +53,7 @@ static constexpr I8 up = 2;    ///< up
 static constexpr I8 down = -2; ///< down
 }
 
-struct LUSSLIB cxy {
+struct OOSLIB cxy {
 
     int x = -1;
     int y = -1;
@@ -95,7 +95,7 @@ struct LUSSLIB cxy {
 };
 
 
-struct LUSSLIB size {
+struct OOSLIB size {
     int w{0};
     int h{0};
      
@@ -176,7 +176,7 @@ struct LUSSLIB size {
  * @author oldlonecoder (lussier.luxe@gmail.com)
  *
  */
-struct LUSSLIB rectangle {
+struct OOSLIB rectangle {
 
     cxy a{0, 0};
     cxy b{0, 0};
@@ -303,7 +303,7 @@ struct LUSSLIB rectangle {
 };
 
 
-struct LUSSLIB string2d
+struct OOSLIB string2d
 {
     oos::string win{};
     rectangle r;
