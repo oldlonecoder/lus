@@ -18,8 +18,8 @@
 
 
 #pragma once
-#include <luss/rem.h>
-#include <luss/cadres.h>
+#include <oos/rem.h>
+#include <oos/cadres.h>
 #include <iostream>
 #include <cstring>
 #include <sstream>
@@ -36,7 +36,7 @@
 #include <chrono>
 #include <stack>
 
-namespace lus
+namespace oos
 {
 
 using namespace integers;
@@ -163,7 +163,7 @@ private:
 
 public:
     static std::string make_str(const char *B, const char *E) { return {B, E}; }
-    static std::string make_str(const lus::string::list& _list);
+    static std::string make_str(const oos::string::list& _list);
     static std::string now(const std::string &str_fmt);
     bool empty() { return _d_.empty(); }
 
@@ -202,7 +202,7 @@ public:
     static std::string bytes(std::vector<int> a_seq);
 
     static std::vector<std::string_view> string_view_list(int Count, char **s, int offset=0);
-    static lus::string::list make_list(int argc, char** argv, int offset=0);
+    static oos::string::list make_list(int argc, char** argv, int offset=0);
 };
 
 

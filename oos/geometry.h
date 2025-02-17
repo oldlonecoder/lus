@@ -19,9 +19,9 @@
 
 
 #pragma once
-#include <luss/string.h>
+#include <oos/string.h>
 
-namespace lus::ui
+namespace oos::ui
 {
 
 namespace justify
@@ -41,7 +41,7 @@ static constexpr u16 auto_size_text   = 0x0100; ///< Justify auto-stretch
 
 
 /**
- * @brief lus::ui::rectangle enums values
+ * @brief oos::ui::rectangle enums values
  * @author &copy; 2008,2022,2023, Serge Lussier, lussier.serge@gmail.com ( oldlonecoder )
  */
 namespace direction
@@ -305,7 +305,7 @@ struct LUSSLIB rectangle {
 
 struct LUSSLIB string2d
 {
-    lus::string win{};
+    oos::string win{};
     rectangle r;
 
     string2d& gotoxy(int x, int y);
@@ -320,7 +320,7 @@ struct LUSSLIB string2d
     // --------------------------
     template<typename t> string2d& operator<< (t v)
     {
-        lus::string str;
+        oos::string str;
         str << v;
         return put(str());
     }

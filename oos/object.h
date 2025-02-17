@@ -18,12 +18,12 @@
 
 
 #pragma once
-#include <luss/rem.h>
+#include <oos/rem.h>
 #include <vector>
 #include <functional>
 
 
-namespace lus
+namespace oos
 {
 
 using namespace integers;

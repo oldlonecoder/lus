@@ -1,10 +1,10 @@
 
-#include <luss/glyphes.h>
+#include <oos/glyphes.h>
 #include <map>
 
-using lus::ui::color;
+using oos::ui::color;
 
-namespace lus
+namespace oos
 {
 
 std::vector<accent_fr::T> accent_fr::data =
@@ -380,7 +380,7 @@ glyph::type glyph::scan(const std::string& ghname)
     return 0;
 }
 
-std::pair<bool, glyph::type> lus::glyph::scan_name(const std::string& glyph_name)
+std::pair<bool, glyph::type> oos::glyph::scan_name(const std::string& glyph_name)
 {
     for (auto& [N,Str] : glyph_dict)
     {
@@ -391,9 +391,9 @@ std::pair<bool, glyph::type> lus::glyph::scan_name(const std::string& glyph_name
 
 
 
-std::string lus::glyph::name(lus::glyph::type gh)
+std::string oos::glyph::name(oos::glyph::type gh)
 {
-    return lus::glyph_dict[gh];
+    return oos::glyph_dict[gh];
 }
 
 

@@ -19,13 +19,13 @@
 
 #pragma once
 
-#include <luss/colors.h>
+#include <oos/colors.h>
 #include <map>
 #include <vector>
 #include <string>
 #include <string_view>
 
-namespace lus
+namespace oos
 {
 
 struct LUSSLIB glyph

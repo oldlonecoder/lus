@@ -18,11 +18,11 @@
 
 #pragma once
 
-#include <luss/notify.h>
+#include <oos/notify.h>
 #include <memory>
 
 
-namespace lus::cmd
+namespace oos::cmd
 {
 
 

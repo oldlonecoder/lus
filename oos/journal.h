@@ -18,31 +18,31 @@
 
 #pragma once
 
-#include <luss/glyphes.h>
-#include <luss/string.h>
+#include <oos/glyphes.h>
+#include <oos/string.h>
 
 #include <source_location>
 
 #include <functional>
-#include <luss/geometry.h>
+#include <oos/geometry.h>
 #include <filesystem>
 #include <fstream>
 
 
 
-using lus::ui::color;
-using lus::glyph;
-using lus::accent_fr;
-using lus::ui::rectangle;
-using lus::ui::cxy;
-using lus::ui::size;
+using oos::ui::color;
+using oos::glyph;
+using oos::accent_fr;
+using oos::ui::rectangle;
+using oos::ui::cxy;
+using oos::ui::size;
 
 
 
 
 
 
-namespace lus
+namespace oos
 {
 
 class object;
@@ -67,7 +67,7 @@ private:
     rem::cc _code_{};
     std::source_location location{};
     // ---------------------------------
-    lus::string  text{};
+    oos::string  text{};
 
     header_component _headercomp_{1,0,1,1,1,1};
 public:
@@ -105,9 +105,9 @@ public:
     journal& operator << (rem::cc cod);
     journal& operator << (rem::fn fn);
     journal& operator << (rem::action a_action);
-    journal& operator << (const lus::string::list& _list );
+    journal& operator << (const oos::string::list& _list );
     journal& operator << (journal::oef e);
-    journal& operator << (const lus::string& str );
+    journal& operator << (const oos::string& str );
     template<typename T> journal& operator << (const T& v)
     {
         text << v;

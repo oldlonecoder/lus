@@ -19,12 +19,12 @@
 
 #pragma once
 
-//#include <luss/rem.h>
+//#include <oos/rem.h>
 #include <any>
 #include <optional>
-#include <luss/journal.h>
+#include <oos/journal.h>
 
-namespace lus::ui
+namespace oos::ui
 {
 /*!
  * @brief Trying to implement my own very specific expect return value class using std::any and std::optional.

@@ -20,10 +20,10 @@
 
 
 #include <stack>
-#include <luss/colors.h>
-#include <luss/glyphes.h>
+#include <oos/colors.h>
+#include <oos/glyphes.h>
 
-namespace lus
+namespace oos
 {
 
 using namespace integers;

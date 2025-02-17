@@ -13,10 +13,10 @@
 
 
 
-#include <luss/cmdargs.h>
-#include <luss/string.h>
+#include <oos/cmdargs.h>
+#include <oos/string.h>
 
-namespace lus::cmd
+namespace oos::cmd
 {
 
 
@@ -168,9 +168,9 @@ cmd_switch &line::operator[](const std::string &ArgName)
 
 std::string line::usage()
 {
-    lus::string Str;
+    oos::string Str;
     Str | "usage:\n";
-    lus::string Unused, Used, Used0;
+    oos::string Unused, Used, Used0;
 
     Unused | color::red1 | glyph::unauth;
     Used   | color::lightgreen2 | glyph::ok;

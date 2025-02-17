@@ -11,14 +11,14 @@
  *   Usual GNU FREE GPL-1,2, MIT... apply to this project.                                *
  ******************************************************************************************/
 
-#include <luss/object.h>
+#include <oos/object.h>
 #include <iostream>
-#include <luss/colors.h>
-#include <luss/glyphes.h>
-#include <luss/string.h>
-#include <luss/journal.h>
+#include <oos/colors.h>
+#include <oos/glyphes.h>
+#include <oos/string.h>
+#include <oos/journal.h>
 
-namespace lus
+namespace oos
 {
 
 object::object(object *ParentObj, const std::string &ObjID):
@@ -92,7 +92,7 @@ void object::append_child(object *o)
 
 std::string object::pretty_id() const
 {
-    lus::string text;
+    oos::string text;
 
     auto [gh,colors] = rem::return_code_attributes(rem::cc::object_ptr);
     text

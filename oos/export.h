@@ -64,7 +64,7 @@ private:
 
 //----------------------------------------------------------------------------
 
-namespace lus::integers
+namespace oos::integers
 {
 using Byte  = uint8_t;
 using I8    = int8_t;
