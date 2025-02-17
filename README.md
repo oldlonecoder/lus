@@ -1,5 +1,7 @@
 
-# project luss ( my code Library )
+# project oos( my out of standard base code Library )
+- No smart pointers.
+- Bare minimum decl(...)-forward types to make the compiler NOT to program in my place.
 
 # Roadmap of this hobbist project
 
