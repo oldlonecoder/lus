@@ -7,7 +7,7 @@
 
 ### Exploring, Learning and write a set of C++ framework of (from my own) libraries
 
-## core support classes ( namespace lus ) main directory( for ex.: #include <oos/string.h>)
+## core support classes ( namespace lus ) main directory( for ex.: #include <lus/string.h>)
 
     - [class lus::string]
         Composite accumulator for serializing and formatting supported components into its container - std::string.
