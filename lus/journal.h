@@ -18,36 +18,36 @@
 
 #pragma once
 
-#include <oos/glyphes.h>
-#include <oos/string.h>
+#include <lus/glyphes.h>
+#include <lus/string.h>
 
 #include <source_location>
 
 #include <functional>
-#include <oos/geometry.h>
+#include <lus/geometry.h>
 #include <filesystem>
 #include <fstream>
 
 
 
-using oos::ui::color;
-using oos::glyph;
-using oos::accent_fr;
-using oos::ui::rectangle;
-using oos::ui::cxy;
-using oos::ui::size;
+using lus::ui::color;
+using lus::glyph;
+using lus::accent_fr;
+using lus::ui::rectangle;
+using lus::ui::cxy;
+using lus::ui::size;
 
 
 
 
 
 
-namespace oos
+namespace lus
 {
 
 class object;
 
-class OOSLIB journal
+class LUSLIB journal
 {
 public:
     struct header_component
@@ -67,7 +67,7 @@ private:
     rem::cc _code_{};
     std::source_location location{};
     // ---------------------------------
-    oos::string  text{};
+    lus::string  text{};
 
     header_component _headercomp_{1,0,1,1,1,1};
 public:
@@ -105,9 +105,9 @@ public:
     journal& operator << (rem::cc cod);
     journal& operator << (rem::fn fn);
     journal& operator << (rem::action a_action);
-    journal& operator << (const oos::string::list& _list );
+    journal& operator << (const lus::string::list& _list );
     journal& operator << (journal::oef e);
-    journal& operator << (const oos::string& str );
+    journal& operator << (const lus::string& str );
     template<typename T> journal& operator << (const T& v)
     {
         text << v;
@@ -118,7 +118,7 @@ public:
     void init_header();
     static void purge(const std::function<void(journal &)>& f);
 
-    struct OOSLIB section
+    struct LUSLIB section
     {
         std::string id;   ///< Section ID which is also the base name of the output file.
         std::ofstream ofs;
@@ -146,7 +146,7 @@ public:
     //static rem::cc endl();
     ~journal();
 
-    class OOSLIB exception :  public std::exception
+    class LUSLIB exception :  public std::exception
     {
     public:
 

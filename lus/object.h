@@ -18,17 +18,17 @@
 
 
 #pragma once
-#include <oos/rem.h>
+#include <lus/rem.h>
 #include <vector>
 #include <functional>
 
 
-namespace oos
+namespace lus
 {
 
 using namespace integers;
 
-class  OOSLIB object
+class  LUSLIB object
 {
     CLASSNAME_START(object)
 protected:

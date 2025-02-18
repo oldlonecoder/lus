@@ -20,12 +20,12 @@
 //#pragma once
 
 
-#include <oos/string.h>
+#include <lus/string.h>
 
 #define out std::cout
 #define lend std::endl;
 
-namespace oos
+namespace lus
 {
 
 
@@ -243,7 +243,7 @@ bool string::eat(string::word& w)
 }
 
 
-std::string string::make_str(const oos::string::list& _list)
+std::string string::make_str(const lus::string::list& _list)
 {
     std::string str="{";
     int col=0;
@@ -319,7 +319,7 @@ std::vector<std::string_view> string::string_view_list(int Count, char** s, int 
 }
 
 
-oos::string::list string::make_list(int argc, char** argv, int offset)
+lus::string::list string::make_list(int argc, char** argv, int offset)
 {
     std::vector<std::string> result;
     for(int i = offset; i < argc; ++i) result.emplace_back(argv[i]);

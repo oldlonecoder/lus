@@ -3,12 +3,12 @@
 //
 
 
-#include <oos/geometry.h>
+#include <lus/geometry.h>
 //#include <lus++/journal.h>
 
 
 
-namespace oos::ui
+namespace lus::ui
 {
 
 

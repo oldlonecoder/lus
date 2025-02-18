@@ -12,7 +12,7 @@
  ******************************************************************************************/
 
 
-#include <oos/colors.h>
+#include <lus/colors.h>
 #include <iostream>
 #include <cstring>
 #include <sstream>
@@ -32,7 +32,7 @@
 #include <map>
 
 
-namespace oos::ui
+namespace lus::ui
 {
 
 using ui::color;

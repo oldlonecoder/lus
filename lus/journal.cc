@@ -2,7 +2,7 @@
 // Created by oldlonecoder on 14/06/24.
 //
 //  matricule UPS:
-#include <oos/journal.h>
+#include <lus/journal.h>
 
 
 /******************************************************************************************
@@ -23,7 +23,7 @@
 namespace Fs = std::filesystem;
 
 
-namespace oos
+namespace lus
 {
 //std::vector<journal> journal::journals{};
 std::mutex journal_guard{};
@@ -271,9 +271,9 @@ void journal::init_header()
 {
     if(_headercomp_.stamp)
     {
-        auto txt{oos::string::now("%H:%M:%S")};
+        auto txt{lus::string::now("%H:%M:%S")};
         auto [ic, a] = rem::function_attributes(rem::fn::stamp);
-        oos::string acc;
+        lus::string acc;
         acc | a.fg | glyph::data[ic]  | txt;
         text | acc() | " ";
     }
@@ -286,8 +286,8 @@ void journal::init_header()
     if(_headercomp_.file)
     {
         auto [gh, colors] = rem::function_attributes(rem::fn::file);
-        oos::string txt = location.file_name();
-        oos::string::word::list words;
+        lus::string txt = location.file_name();
+        lus::string::word::list words;
         if(auto count = txt.words(words, false, "/"); !count) return ;
         text | color::reset | " in " | colors | gh;
         if(words.size() > 1)
@@ -373,9 +373,9 @@ journal &journal::operator<<(rem::action a_action)
 }
 
 
-journal& journal::operator<<(const oos::string::list& _list)
+journal& journal::operator<<(const lus::string::list& _list)
 {
-    text |  oos::string::make_str(_list);
+    text |  lus::string::make_str(_list);
     //...
     return *this;
 }
@@ -393,7 +393,7 @@ journal& journal::operator<<(journal::oef e)
 }
 
 
-journal& journal::operator<<(const oos::string& _str)
+journal& journal::operator<<(const lus::string& _str)
 {
     text | _str();
     return *this;
@@ -437,10 +437,10 @@ journal &journal::operator<<(rem::fn fn)
 
             //std::chrono::zoned_time date{"america/toronto", std::chrono::system_clock::now()};
             //const auto tp{std::chrono::system_clock::now()};
-            //auto txt{oos::string::now("{:%h:%m:%s}", tp)};
+            //auto txt{lus::string::now("{:%h:%m:%s}", tp)};
             auto [ic, a] = rem::function_attributes(rem::fn::stamp);
-            oos::string acc;
-            acc | a.fg | glyph::data[ic] | color::reset |oos::string::now("%H:%M:%S");
+            lus::string acc;
+            acc | a.fg | glyph::data[ic] | color::reset |lus::string::now("%H:%M:%S");
             text | acc() | " ";
             return *this;
         }
@@ -451,8 +451,8 @@ journal &journal::operator<<(rem::fn fn)
         case rem::fn::weekday: {
             auto [ic, a] = rem::function_attributes(rem::fn::weekday);
             //auto today{std::chrono::system_clock::now()};
-            oos::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | oos::string::now("%a");
+            lus::string acc;
+            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%a");
             text | acc();
             return *this;
         }
@@ -460,8 +460,8 @@ journal &journal::operator<<(rem::fn fn)
         case rem::fn::day : {
             auto [ic, a] = rem::function_attributes(rem::fn::day);
             //auto today{std::chrono::system_clock::now()};
-            oos::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | oos::string::now("%d");
+            lus::string acc;
+            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%d");
             text | acc();
             return *this;
         }
@@ -469,24 +469,24 @@ journal &journal::operator<<(rem::fn fn)
         case rem::fn::month: {
             auto [ic, a] = rem::function_attributes(rem::fn::month);
             //auto today{std::chrono::system_clock::now()};
-            oos::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | oos::string::now("%m");
+            lus::string acc;
+            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%m");
             text | acc();
             return *this;
         }
         case rem::fn::monthnum: {
             auto [ic, a] = rem::function_attributes(rem::fn::month);
             //auto today{std::chrono::system_clock::now()};
-            oos::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | oos::string::now("%b");
+            lus::string acc;
+            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%b");
             text | acc();
             return *this;
         }
         case rem::fn::year: {
             auto [ic, a] = rem::function_attributes(rem::fn::year);
             //auto today{std::chrono::system_clock::now()};
-            oos::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | oos::string::now("%y");
+            lus::string acc;
+            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%y");
             text | acc();
             return *this;
         }

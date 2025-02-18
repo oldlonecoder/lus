@@ -19,16 +19,16 @@
 
 #pragma once
 
-#include <oos/colors.h>
+#include <lus/colors.h>
 #include <map>
 #include <vector>
 #include <string>
 #include <string_view>
 
-namespace oos
+namespace lus
 {
 
-struct OOSLIB glyph
+struct LUSLIB glyph
 {
 
     using T = const char*;
@@ -376,7 +376,7 @@ For anyone interested, here'Code the fixed version (I hope you don't mind, I'll 
 
 
 
-struct OOSLIB accent_fr
+struct LUSLIB accent_fr
 {
     using T = const char*;
 

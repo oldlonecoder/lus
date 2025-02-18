@@ -18,8 +18,8 @@
 
 #pragma once
 
-#include <oos/colors.h>
-#include <oos/glyphes.h>
+#include <lus/colors.h>
+#include <lus/glyphes.h>
 
 /*!
  * @brief Return Enumeration Mnemonics  ( A coherent return mnemonics system )
@@ -28,11 +28,11 @@ namespace rem
 {
 
 
-enum class type : oos::integers::U8{
+enum class type : lus::integers::U8{
     none, err, warning, fatal, except, message, output, debug, info, comment, syntax, status, test, interrupted, aborted, segfault, journal
 };
 
-    enum class cc : oos::integers::U8
+    enum class cc : lus::integers::U8
     {
         ok  =0           , ///< Obviously;
         accepted         ,
@@ -77,7 +77,7 @@ enum class type : oos::integers::U8{
     };
 
 
-    enum class fn : oos::integers::U8
+    enum class fn : lus::integers::U8
     {
         func             ,
         endl             , ///< End of line Code, input format
@@ -95,7 +95,7 @@ enum class type : oos::integers::U8{
         year
     };
 
-    enum class action : oos::integers::U8
+    enum class action : lus::integers::U8
     {
         enter            , ///< enter bloc or indent
         leave            , ///< End (journalger: End of entry accumulators, so do commit); End of (sel)Section, Attribute ( auto-color::reset ) and unindent
@@ -110,10 +110,10 @@ std::string to_string(rem::type ty);
 std::string to_string(rem::cc cod);
 std::string to_string(rem::fn fn);
 std::string to_string(rem::action a);
-std::pair<oos::glyph::type, oos::ui::color::pair> type_attributes(rem::type ty);
-std::pair<oos::glyph::type, oos::ui::color::pair> return_code_attributes(rem::cc cod);
-std::pair<oos::glyph::type, oos::ui::color::pair> function_attributes(rem::fn fn);
-std::pair<oos::glyph::type, oos::ui::color::pair> action_attributes(rem::action a);
+std::pair<lus::glyph::type, lus::ui::color::pair> type_attributes(rem::type ty);
+std::pair<lus::glyph::type, lus::ui::color::pair> return_code_attributes(rem::cc cod);
+std::pair<lus::glyph::type, lus::ui::color::pair> function_attributes(rem::fn fn);
+std::pair<lus::glyph::type, lus::ui::color::pair> action_attributes(rem::action a);
 
 }
 

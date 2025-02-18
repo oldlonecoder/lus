@@ -18,15 +18,15 @@
 
 #pragma once
 
-#include <oos/notify.h>
+#include <lus/notify.h>
 #include <memory>
 
 
-namespace oos::cmd
+namespace lus::cmd
 {
 
 
-struct OOSLIB cmd_switch
+struct LUSLIB cmd_switch
 {
     using data = std::vector<std::string_view>;
     using shared = std::shared_ptr<cmd_switch>;
@@ -60,7 +60,7 @@ struct OOSLIB cmd_switch
 };
 
 
-class OOSLIB line
+class LUSLIB line
 {
 
     cmd_switch::array arguments;

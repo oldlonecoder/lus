@@ -19,16 +19,16 @@
 
 
 
-#include <oos/export.h>
+#include <lus/export.h>
 #include <vector>
 #include <map>
 #include <string>
 
 
- namespace oos::ui
+ namespace lus::ui
  {
 
-struct OOSLIB color {
+struct LUSLIB color {
     enum code : integers::U16 {
         /*0   */ black = 0,         //#000000	rgb(128,0,0)	hsl(0,100%,25%)
         /*1   */ maroon,            //#800000	rgb(128,0,0)	hsl(0,100%,25%)
@@ -289,7 +289,7 @@ struct OOSLIB color {
         /*256 */ z =255                 // final enum, same as color::reset;
     };
 
-    struct OOSLIB pair
+    struct LUSLIB pair
     {
         color::code fg = color::white;
         color::code bg = color::grey11;
@@ -298,7 +298,7 @@ struct OOSLIB color {
         color::pair &operator>>(std::string &out);
     };
 
-    struct OOSLIB data
+    struct LUSLIB data
     {
         color::code Enum = color::reset;
         std::string_view color_name = " ";
@@ -323,7 +323,7 @@ struct OOSLIB color {
     static std::string render_html(color::pair a_pair);
     static color::data query_data(color::code a_code);
 
-    struct OOSLIB element
+    struct LUSLIB element
     {
         std::string name{};
         union
@@ -340,7 +340,7 @@ struct OOSLIB color {
         using list = std::vector<color::element>;
     };
 
-    struct OOSLIB elements
+    struct LUSLIB elements
     {
         std::string name{};
 
