@@ -3,7 +3,7 @@
 - No smart pointers.
 - Bare minimum decl(...)-forward types to make the compiler NOT to program in my place.
 
-# Roadmap of this hobbist project
+# Roadmap of this (personal, hobbyist) project
 
 ### Exploring, Learning and write a set of C++ framework of (from my own) libraries
 
