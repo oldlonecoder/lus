@@ -96,16 +96,16 @@ std::string object::pretty_id() const
 
     auto [gh,colors] = rem::return_code_attributes(rem::cc::object_ptr);
     text
-        | colors()
-        | gh
-        | class_name()
-        | color::reset | "::";
+        << colors()
+        << gh
+        << class_name()
+        << color::reset << "::";
     auto [gl, cc] = rem::return_code_attributes(rem::cc::object_id);
     text
-        | cc()
-        | gl
-        | id()
-        | color::reset | ' ';
+        << cc()
+        << gl
+        << id()
+        << color::reset << ' ';
 
     return text();
 }

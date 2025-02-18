@@ -84,7 +84,7 @@ journal &journal::write(std::source_location src)
 
     journal_guard.lock();
     auto& r = **journal::current_section << journal{};
-    r.text | "\r\n";
+    r.text << "\r\n";
     journal_guard.unlock();
     return r;
     // journal_guard.lock();
@@ -231,39 +231,39 @@ journal &journal::operator<<(const rectangle &r)
 
 journal &journal::operator<<(cxy pt)
 {
-    text | std::format("{},{}", pt.x, pt.y);
+    text << std::format("{},{}", pt.x, pt.y);
     return *this;
 }
 
 journal &journal::operator<<(color::code col)
 {
-    text | col;
+    text << col;
     return *this;
 }
 
 journal &journal::operator<<(color::pair fgbg)
 {
-    text | fgbg();
+    text << fgbg();
     return *this;
 }
 
 journal &journal::operator<<(glyph::type gh)
 {
-    text | gh;
+    text << gh;
     return *this;
 }
 
 journal &journal::operator<<(rem::type ty)
 {
     auto [gh,colors] = rem::type_attributes(ty);
-    text | colors | gh  | rem::to_string(ty) | color::reset;
+    text << colors << gh  << rem::to_string(ty) << color::reset;
     return *this;
 }
 
 
 journal &journal::operator<<(accent_fr::type ac)
 {
-    text | accent_fr::data[ac];
+    text << accent_fr::data[ac];
     return *this;
 }
 
@@ -274,13 +274,13 @@ void journal::init_header()
         auto txt{lus::string::now("%H:%M:%S")};
         auto [ic, a] = rem::function_attributes(rem::fn::stamp);
         lus::string acc;
-        acc | a.fg | glyph::data[ic]  | txt;
-        text | acc() | " ";
+        acc << a.fg << glyph::data[ic]  << txt;
+        text << acc() << " ";
     }
     if(_headercomp_.type)
     {
         auto [gh,colors] = rem::type_attributes(_type_);
-        text | colors | gh  | ' ' | rem::to_string(_type_) | color::reset | ' ';
+        text << colors << gh  << ' ' << rem::to_string(_type_) << color::reset << ' ';
     }
 
     if(_headercomp_.file)
@@ -289,16 +289,16 @@ void journal::init_header()
         lus::string txt = location.file_name();
         lus::string::word::list words;
         if(auto count = txt.words(words, false, "/"); !count) return ;
-        text | color::reset | " in " | colors | gh;
+        text << color::reset << " in " << colors << gh;
         if(words.size() > 1)
         {
             auto i = words.end();
             --i; // filename
             auto filename = *i;
             --i; // parent dir
-            text | **i;
+            text << **i;
             ++i;
-            text | '/' | **i | ' ';
+            text << '/' << **i << ' ';
         }
         words.clear();
     }
@@ -314,18 +314,18 @@ void journal::init_header()
     if(_headercomp_.line)
     {
         auto [gh, colors] = rem::function_attributes(rem::fn::line);
-        text | colors | "line: " | std::format("{}", location.line()) | color::reset;
+        text << colors << "line: " << std::format("{}", location.line()) << color::reset;
     }
     if(_headercomp_.fun)
         (*this) << rem::fn::endl << rem::fn::func;
 
-    //text | " \r\n";
+    //text << " \r\n";
 }
 
 
 journal &journal::operator<<(char ch)
 {
-    text | ch;
+    text << ch;
     return *this;
 }
 
@@ -365,7 +365,7 @@ journal &journal::operator<<(rem::action a_action)
         }
         break;
         default:
-            text | colors() | gh | rem::to_string(a_action);
+            text << colors() << gh << rem::to_string(a_action);
         break;
     }
 
@@ -375,7 +375,7 @@ journal &journal::operator<<(rem::action a_action)
 
 journal& journal::operator<<(const lus::string::list& _list)
 {
-    text |  lus::string::make_str(_list);
+    text <<  lus::string::make_str(_list);
     //...
     return *this;
 }
@@ -395,7 +395,7 @@ journal& journal::operator<<(journal::oef e)
 
 journal& journal::operator<<(const lus::string& _str)
 {
-    text | _str();
+    text << _str();
     return *this;
 }
 
@@ -404,10 +404,10 @@ journal &journal::operator<<(rem::cc cod)
 {
     auto [gh,colors] = rem::return_code_attributes(cod);
     text
-        | colors()
-        | gh
-        | rem::to_string(cod)
-        | color::reset | ' ';
+        << colors()
+        << gh
+        << rem::to_string(cod)
+        << color::reset << ' ';
     return *this;
 }
 
@@ -415,7 +415,7 @@ journal &journal::operator<<(rem::fn fn)
 {
     switch (fn) {
         case rem::fn::endl:
-            text | '\n';
+            text << '\n';
 //            switch (appjournal::format()) ///@todo create journal::format(); directly instead.
 //            {
 //                case color::format::ansi256:
@@ -440,20 +440,20 @@ journal &journal::operator<<(rem::fn fn)
             //auto txt{lus::string::now("{:%h:%m:%s}", tp)};
             auto [ic, a] = rem::function_attributes(rem::fn::stamp);
             lus::string acc;
-            acc | a.fg | glyph::data[ic] | color::reset |lus::string::now("%H:%M:%S");
-            text | acc() | " ";
+            acc << a.fg << glyph::data[ic] <<color::reset << lus::string::now("%H:%M:%S");
+            text << acc() << " ";
             return *this;
         }
 
         case rem::fn::file:
-            text | location.file_name();
+            text << location.file_name();
             return *this;
         case rem::fn::weekday: {
             auto [ic, a] = rem::function_attributes(rem::fn::weekday);
             //auto today{std::chrono::system_clock::now()};
             lus::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%a");
-            text | acc();
+            acc << /*utf::glyph::data[ic] <<*/ a.fg << lus::string::now("%a");
+            text << acc();
             return *this;
         }
 
@@ -461,8 +461,8 @@ journal &journal::operator<<(rem::fn fn)
             auto [ic, a] = rem::function_attributes(rem::fn::day);
             //auto today{std::chrono::system_clock::now()};
             lus::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%d");
-            text | acc();
+            acc << /*utf::glyph::data[ic] <<*/ a.fg << lus::string::now("%d");
+            text << acc();
             return *this;
         }
 
@@ -470,29 +470,29 @@ journal &journal::operator<<(rem::fn fn)
             auto [ic, a] = rem::function_attributes(rem::fn::month);
             //auto today{std::chrono::system_clock::now()};
             lus::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%m");
-            text | acc();
+            acc << /*utf::glyph::data[ic] <<*/ a.fg << lus::string::now("%m");
+            text << acc();
             return *this;
         }
         case rem::fn::monthnum: {
             auto [ic, a] = rem::function_attributes(rem::fn::month);
             //auto today{std::chrono::system_clock::now()};
             lus::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%b");
-            text | acc();
+            acc << /*utf::glyph::data[ic] <<*/ a.fg << lus::string::now("%b");
+            text << acc();
             return *this;
         }
         case rem::fn::year: {
             auto [ic, a] = rem::function_attributes(rem::fn::year);
             //auto today{std::chrono::system_clock::now()};
             lus::string acc;
-            acc | /*utf::glyph::data[ic] <<*/ a.fg | lus::string::now("%y");
-            text | acc();
+            acc << /*utf::glyph::data[ic] <<*/ a.fg << lus::string::now("%y");
+            text <<acc();
             return *this;
         }
         case rem::fn::func:
             auto [gh, colors] = rem::function_attributes(rem::fn::func);
-            text | "From " | colors | location.function_name() | color::reset | "\n";
+            text << "From " << colors << location.function_name() << color::reset << "\n";
             break;
 
         //default: break;
@@ -508,7 +508,7 @@ journal::exception journal::exception::operator[](journal& el)
 }
 
 
-journal::journal(rem::type in_type, rem::cc code, std::source_location src):_type_(in_type), _code_(code), location(std::move(src)){text | "\r\n"; }
+journal::journal(rem::type in_type, rem::cc code, std::source_location src):_type_(in_type), _code_(code), location(std::move(src)){text << "\r\n"; }
 
 
 const char* journal::exception::what() const noexcept

@@ -169,25 +169,25 @@ cmd_switch &line::operator[](const std::string &ArgName)
 std::string line::usage()
 {
     lus::string Str;
-    Str | "usage:\n";
+    Str << "usage:\n";
     lus::string Unused, Used, Used0;
 
-    Unused | color::red1 | glyph::unauth;
-    Used   | color::lightgreen2 | glyph::ok;
+    Unused << color::red1 << glyph::unauth;
+    Used   << color::lightgreen2 << glyph::ok;
 
-    Str | "------------------------------------------------------------------------------\n";
+    Str << "------------------------------------------------------------------------------\n";
     for (auto Arg : arguments)
     {
-        Str | std::format("{:>2s} | {:>20s} | {:>45s}",
+        Str << std::format("{:>2s} | {:>20s} | {:>45s}",
                 Arg->switch_char,
                 Arg->switch_text ,
                 Arg->descriptions ,
                 (Arg->enabled ? Used() : Unused())
             );
-                
-        
 
-        Str | color::reset | "\n------------------------------------------------------------------------------\n";
+
+
+        Str << color::reset << "\n------------------------------------------------------------------------------\n";
     }
     return Str();
 }

@@ -736,7 +736,7 @@ void string2d::clear()
 std::string string2d::details()
 {
     string str = "string2d setails:\n";
-    str | r.tostring() | " cursor: " | (std::string)r.cursor;
+    str << r.tostring() << " cursor: " << (std::string)r.cursor;
     return str();
 }
 

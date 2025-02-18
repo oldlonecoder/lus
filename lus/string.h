@@ -71,6 +71,7 @@ public:
     string(float v);
 
     ~string();
+
     string& operator=(const string& a_str);
     string& operator=(const char* a_str);
     string& operator=(char a_ch);
@@ -105,17 +106,20 @@ public:
         return *this;
     }
 
-    string& operator | (color::code color);
-    string& operator | (color::pair colors);
-    string& operator | (const char* a_str) { _d_ += a_str; return *this; }
-    string& operator | (const std::string& a_str) { _d_ += a_str; return *this; }
-    string& operator | (glyph::type);
-    string& operator | (accent_fr::type ac);
-    string& operator | (cadre::index fri);
-    string& operator | (char c) { _d_ += c; return *this;}
-    string& operator | (int  c) { _d_ += std::to_string(c); return *this;}
-    string& operator | (float  c) { _d_ += std::to_string(c); return *this;}
-    string& operator | (std::string_view sv) { _d_ += sv; return *this; }
+    //-------------- input/concatenation operators. -------------------------------
+    string& operator << (color::code color);
+    string& operator << (color::pair colors);
+    string& operator << (const char* a_str) { _d_ += a_str; return *this; }
+    string& operator << (const std::string& a_str) { _d_ += a_str; return *this; }
+    string& operator << (glyph::type);
+    string& operator << (accent_fr::type ac);
+    string& operator << (cadre::index fri);
+    string& operator << (char c) { _d_ += c; return *this;}
+    string& operator << (int  c) { _d_ += std::to_string(c); return *this;}
+    string& operator << (float  c) { _d_ += std::to_string(c); return *this;}
+    string& operator << (std::string_view sv) { _d_ += sv; return *this; }
+    //-----------------------------------------------------------------------------
+
     std::string operator()()const  { return _d_; }
     explicit operator std::string() { return _d_; }
     explicit operator std::string() const { return _d_; }
@@ -135,7 +139,7 @@ public:
     void clear() { _d_.clear(); }
 
     #pragma region tokenizer
-    
+
 
     struct LUSLIB word final
     {
@@ -152,7 +156,7 @@ public:
     size_t words(string::word::list& a_list,  bool a_keep_as_word=true, const char* a_sep = string::s_default_separators);
     template<typename In> string& hex(In& d)
     {
-        std::istringstream in(_d_.c_str()+2); // bypass mandatory '0x/X" 
+        std::istringstream in(_d_.c_str()+2); // bypass mandatory '0x/X"
         in >> std::hex >> d;
         return *this;
     }

@@ -79,21 +79,21 @@ string& string::operator=(float v)             num_assign(v)
 string& string::operator=(double v)            num_assign(v)
 
 
-string& string::operator|(color::code color)
+string& string::operator << (color::code color)
 {
     _d_ += color::render(color);
     return *this;
 }
 
 
-string& string::operator|(color::pair colors)
+string& string::operator << (color::pair colors)
 {
     _d_ += color::render(colors);
     return *this;
 }
 
 
-string& string::operator|(glyph::type ig)
+string& string::operator << (glyph::type ig)
 {
     if(ig > glyph::journal) return *this;
     _d_ += glyph::data[ig];
@@ -101,14 +101,14 @@ string& string::operator|(glyph::type ig)
 }
 
 
-string& string::operator|(accent_fr::type ac)
+string& string::operator << (accent_fr::type ac)
 {
     _d_ += accent_fr::data[ac];
     return *this;
 }
 
 
-string& string::operator|(cadre::index fri)
+string& string::operator << (cadre::index fri)
 {
     _d_ += cadre()[fri];
     return *this;
@@ -122,7 +122,14 @@ std::string string::word::operator*()
 
 
 
-
+/*!
+ * \brief string::words
+ * \param a_list
+ * \param a_keep_as_word
+ * \param a_sep
+ * \return
+ * \note The code below is very hard to read, I know, even from myself being the author... I had to choose between speed + efficiency + weight - and readability. I have chosen speed...
+ */
 size_t string::words(string::word::list& a_list, bool a_keep_as_word, const char* a_sep)
 {
     if(_d_.empty()) return 0;
